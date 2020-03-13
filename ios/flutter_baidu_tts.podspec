@@ -14,7 +14,7 @@ A new Flutter plugin.
   s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
-  s.public_header_files = 'Classes/**/*.h'
+  s.public_header_files = 'Classes/FlutterBaiduTtsPlugin.h'
 
   s.vendored_libraries = 'Classes/BDSClientLib/libBaiduSpeechSDK.a'
   s.libraries = 'sqlite3.0','iconv.2.4.0','c++','z.1.2.5'
