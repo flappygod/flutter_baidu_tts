@@ -70,6 +70,30 @@ public class FlutterBaiduTtsPlugin implements FlutterPlugin, MethodCallHandler {
                 //返回成功
                 result.success(null);
                 break;
+            case "pause":
+                //说话
+                if (speaker != null) {
+                    speaker.pause();
+                }
+                //返回成功
+                result.success(null);
+                break;
+            case "resume":
+                //说话
+                if (speaker != null) {
+                    speaker.resume();
+                }
+                //返回成功
+                result.success(null);
+                break;
+            case "cancel":
+                //说话
+                if (speaker != null) {
+                    speaker.stop();
+                }
+                //返回成功
+                result.success(null);
+                break;
             default:
                 //没有实现
                 result.notImplemented();

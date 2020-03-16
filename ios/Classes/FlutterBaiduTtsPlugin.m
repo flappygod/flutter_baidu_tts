@@ -29,12 +29,34 @@
 
 //方法调用
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
+    //阅读
     if ([@"speak" isEqualToString:call.method]) {
         NSString* text= call.arguments[@"text"];
         //错误
         NSError* err = nil;
         //说话
         [[BDSSpeechSynthesizer sharedInstance] speakSentence:text withError:&err];
+        //说话
+        result(nil);
+    }
+    //取消阅读
+    if ([@"cancel" isEqualToString:call.method]) {
+        //说话
+        [[BDSSpeechSynthesizer sharedInstance] cancel];
+        //说话
+        result(nil);
+    }
+    //暂停
+    if ([@"pause" isEqualToString:call.method]) {
+        //说话
+        [[BDSSpeechSynthesizer sharedInstance] pause];
+        //说话
+        result(nil);
+    }
+    //继续
+    if ([@"resume" isEqualToString:call.method]) {
+        //说话
+        [[BDSSpeechSynthesizer sharedInstance] resume];
         //说话
         result(nil);
     } else {

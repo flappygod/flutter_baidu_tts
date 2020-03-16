@@ -231,7 +231,7 @@ public class BaiduTTsSpeaker {
     /**
      * 暂停播放。仅调用speak后生效
      */
-    private void pause() {
+    public void pause() {
         int result = synthesizer.pause();
         checkResult(result, "pause");
     }
@@ -239,7 +239,7 @@ public class BaiduTTsSpeaker {
     /**
      * 继续播放。仅调用speak后生效，调用pause生效
      */
-    private void resume() {
+    public void resume() {
         int result = synthesizer.resume();
         checkResult(result, "resume");
     }
@@ -247,7 +247,7 @@ public class BaiduTTsSpeaker {
     /*
      * 停止合成引擎。即停止播放，合成，清空内部合成队列。
      */
-    private void stop() {
+    public void stop() {
         int result = synthesizer.stop();
         checkResult(result, "stop");
     }
