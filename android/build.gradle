@@ -43,4 +43,5 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'androidx.core:core:1.0.0'
 }

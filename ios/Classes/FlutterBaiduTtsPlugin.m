@@ -9,6 +9,22 @@
     NSString* SECRET_KEY ;
 }
 
+//配置sdk
+-(void)configureSDK{
+
+    APP_ID=@"19173001";
+    API_KEY=@"1NToCF242MsOTFm3hLMY0zfl";
+    SECRET_KEY=@"HTFgw3UbOHsAnkBuKSVcdECoDuxq1Szn";
+
+    //设置log
+    [BDSSpeechSynthesizer setLogLevel:BDS_PUBLIC_LOG_VERBOSE];
+    //设置代理
+    [[BDSSpeechSynthesizer sharedInstance] setSynthesizerDelegate:self];
+    //在线设置
+    [self configureOnlineTTS];
+    //离线设置
+    [self configureOfflineTTS];
+}
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
     FlutterMethodChannel* channel = [FlutterMethodChannel
@@ -64,27 +80,19 @@
     }
 }
 
-//配置sdk
--(void)configureSDK{
-    
-    APP_ID=@"18813713";
-    API_KEY=@"VP40FWhGDRzKVhmqB6N3cL3n";
-    SECRET_KEY=@"GxR56PjnzC6dd5mQP7NHPOXtpwRPcW1i";
-    
-    
-    NSLog(@"TTS version info: %@", [BDSSpeechSynthesizer version]);
-    [BDSSpeechSynthesizer setLogLevel:BDS_PUBLIC_LOG_VERBOSE];
-    [[BDSSpeechSynthesizer sharedInstance] setSynthesizerDelegate:self];
-    [self configureOnlineTTS];
-    [self configureOfflineTTS];
-}
 
 -(void)configureOnlineTTS{
+    //高度
     [[BDSSpeechSynthesizer sharedInstance] setApiKey:API_KEY withSecretKey:SECRET_KEY];
+    //返回
     [[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryPlayback error:nil];
+    //speaker
     [[BDSSpeechSynthesizer sharedInstance] setSynthParam:@(BDS_SYNTHESIZER_SPEAKER_FEMALE) forKey:BDS_SYNTHESIZER_PARAM_SPEAKER];
+    //超时时间
+    [[BDSSpeechSynthesizer sharedInstance] setSynthParam:@(1) forKey:BDS_SYNTHESIZER_PARAM_ONLINE_REQUEST_TIMEOUT];
+    //设置超时时间
+    [[BDSSpeechSynthesizer sharedInstance] setSynthParam:@(REQ_CONNECTIVITY_3G) forKey:BDS_SYNTHESIZER_PARAM_ONLINE_TTS_THRESHOLD];
     
-    //    [[BDSSpeechSynthesizer sharedInstance] setSynthParam:@(10) forKey:BDS_SYNTHESIZER_PARAM_ONLINE_REQUEST_TIMEOUT];
 }
 
 -(void)configureOfflineTTS{

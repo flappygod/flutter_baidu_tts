@@ -2,6 +2,11 @@
 
 A new Flutter plugin.
 
+修改IOS key  请进入 FlutterBaiduTtsPlugin 中修改。
+
+修改Android key 请进入 assets\auth.properties 修改
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter

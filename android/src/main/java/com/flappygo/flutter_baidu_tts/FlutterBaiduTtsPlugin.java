@@ -10,7 +10,6 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodCall;
 
-import androidx.annotation.NonNull;
 
 import android.content.Context;
 
@@ -31,7 +30,7 @@ public class FlutterBaiduTtsPlugin implements FlutterPlugin, MethodCallHandler {
     }
 
     @Override
-    public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
+    public void onAttachedToEngine(FlutterPluginBinding flutterPluginBinding) {
         final MethodChannel channel = new MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutter_baidu_tts");
         FlutterBaiduTtsPlugin flutterbaiduttsPlugin = new FlutterBaiduTtsPlugin();
         flutterbaiduttsPlugin.initContext(flutterPluginBinding.getApplicationContext());
@@ -58,7 +57,7 @@ public class FlutterBaiduTtsPlugin implements FlutterPlugin, MethodCallHandler {
     }
 
     @Override
-    public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
+    public void onMethodCall(MethodCall call, Result result) {
         switch (call.method) {
             case "speak":
                 //文本
@@ -102,7 +101,7 @@ public class FlutterBaiduTtsPlugin implements FlutterPlugin, MethodCallHandler {
     }
 
     @Override
-    public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+    public void onDetachedFromEngine(FlutterPluginBinding binding) {
         if (speaker != null) {
             speaker.release();
             speaker = null;
